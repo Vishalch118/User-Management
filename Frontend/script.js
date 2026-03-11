@@ -1,9 +1,10 @@
+const API_URL = "https://user-management-jelx.onrender.com";
 async function login() {
 
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
 
-  const response = await fetch("http://localhost:5000/auth/login", {
+  const response = await fetch(`${API_URL}/auth/login`, {
     method: "POST",                               //sends data to server
     headers: {
       "Content-Type": "application/json"          //data is in json format
@@ -29,7 +30,7 @@ async function login() {
 
 async function loadUsers() {
 
-  const response = await fetch("http://localhost:5000/admin/users"); 
+  const response = await fetch(`${API_URL}/admin/users`);
   const users = await response.json();
 
   const table = document.getElementById("userTable");
@@ -79,7 +80,7 @@ async function loadUsers() {
 
 async function updatePermission(id, permission) {
 
-  await fetch("http://localhost:5000/admin/permission", {
+  await fetch(`${API_URL}/admin/permission`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json"
@@ -96,7 +97,7 @@ async function updatePermission(id, permission) {
 
 async function loadBlog() {
 
-  const res = await fetch("http://localhost:5000/blog")
+  const res = await fetch(`${API_URL}/blog`);
   const blog = await res.json()
 
   const user = JSON.parse(localStorage.getItem("user"))
@@ -127,7 +128,7 @@ async function updateBlog() {
   const user = JSON.parse(localStorage.getItem("user"))
   const content = document.getElementById("editBox").value
 
-  await fetch("http://localhost:5000/blog/update", {
+  await fetch(`${API_URL}/blog/update`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json"
