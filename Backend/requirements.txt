@@ -1,0 +1,7 @@
+express 
+mysql2 
+cors 
+bcrypt 
+jsonwebtoken 
+dotenv
+nodemon
